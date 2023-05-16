@@ -65,38 +65,39 @@ def iterate_induced_dipoles(alpha, initial_mus, r, convergence_threshold, filena
 
     return total_mus_new, fields, induction_energy, electrostatic_energy
 
-# Constants
-convergence_threshold = 1e-4
-mu_initial = 1.8550
-num_molecules = 5
-debye_to_eA = 0.20819434
-epsilon_0_amstrong = 0.0005526349 #is in eV*angstrom
-alpha_zz = 1.4500 * 4 * np.pi *epsilon_0_amstrong #is in Angstrom^3
-alpha_zz_to_meter = 1.4500e-30 #is in meter^3
-q = 1
-eA_per_Debye = 0.20819434
+if __name__ == '__main__':
+    # Constants
+    convergence_threshold = 1e-4
+    mu_initial = 1.8550
+    num_molecules = 5
+    debye_to_eA = 0.20819434
+    epsilon_0_amstrong = 0.0005526349 #is in eV*angstrom
+    alpha_zz = 1.4500 * 4 * np.pi *epsilon_0_amstrong #is in Angstrom^3
+    alpha_zz_to_meter = 1.4500e-30 #is in meter^3
+    q = 1
+    eA_per_Debye = 0.20819434
 
 
-# Replace r with the actual distance in angstroms
-distances = [2.5,3.5,4.5] # Replace with the actual value
+    # Replace r with the actual distance in angstroms
+    distances = [2.5,3.5,4.5] # Replace with the actual value
 
-for r in distances:
-    # Initialize dipoles and positions
-    mus = np.ones(num_molecules) * mu_initial
+    for r in distances:
+        # Initialize dipoles and positions
+        mus = np.ones(num_molecules) * mu_initial
 
-    # Calculate induced dipoles
-    filename = f'results_q3_{r}.csv'
-    total_mus, fields, induction_energy, electrostatic_energy = iterate_induced_dipoles(alpha_zz, mus, r, convergence_threshold, filename)
-    induced_mus = total_mus - mu_initial
+        # Calculate induced dipoles
+        filename = f'results_q3_{r}.csv'
+        total_mus, fields, induction_energy, electrostatic_energy = iterate_induced_dipoles(alpha_zz, mus, r, convergence_threshold, filename)
+        induced_mus = total_mus - mu_initial
 
-    # # Calculate the induction energy
-    # fields = calculate_field(total_mus, r)
+        # # Calculate the induction energy
+        # fields = calculate_field(total_mus, r)
 
-    # Print the results
-    print("Results for r =", r)
-    print("Induced dipoles (Debye):", induced_mus)
-    print("Total dipoles (Debye):", total_mus)
-    print("Induction energy (eV):", induction_energy)
-    print("Electrostatic energy (eV):", electrostatic_energy)
-    print("Total Electrostatic energy (eV):", np.sum(electrostatic_energy))
-    print()
+        # Print the results
+        print("Results for r =", r)
+        print("Induced dipoles (Debye):", induced_mus)
+        print("Total dipoles (Debye):", total_mus)
+        print("Induction energy (eV):", induction_energy)
+        print("Electrostatic energy (eV):", electrostatic_energy)
+        print("Total Electrostatic energy (eV):", np.sum(electrostatic_energy))
+        print()
