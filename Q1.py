@@ -40,7 +40,7 @@ def iterate_induced_dipoles(alpha, initial_mus, r, convergence_threshold, filena
     with open(filename, 'w', newline='') as csvfile:
 
         writer = csv.writer(csvfile)
-        writer.writerow(["Step"] + [f"Induced Dipole {i+1} (Debye)" for i in range(5)] + [f'Total Dipole {i+1} (Debye)' for i in range(5)] + ["Induction energy (Debye*angstrom)", "Electrostatic energy (Debye*angstrom)"])
+        writer.writerow(["Step"] + [f"Induced Dipole {i+1} (Debye)" for i in range(5)] + [f'Total Dipole {i+1} (Debye)' for i in range(5)] + ["Induction energy (eV)", "Electrostatic energy (eV)"])
 
         while change > convergence_threshold:
             induced_mus_new = calculate_induced_dipoles(alpha, fields)
@@ -51,7 +51,7 @@ def iterate_induced_dipoles(alpha, initial_mus, r, convergence_threshold, filena
 
             electrostatic_energy = electrostatic_energy_per_dipole(fields, mus, induction_energy)
             
-            writer.writerow([step] + list(induced_mus_new) + list(total_mus_new) + [np.sum(induction_energy)] + [np.sum(electrostatic_energy)])
+            writer.writerow([step] + list(np.round(induced_mus_new,4)) + list(total_mus_new) + [np.sum(induction_energy)] + [np.sum(electrostatic_energy)])
             
             change = np.max(np.abs(total_mus_new - previous_mus))
             previous_mus = total_mus_new.copy()

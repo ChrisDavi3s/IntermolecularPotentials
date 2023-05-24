@@ -1,0 +1,5 @@
+Step,Induced Dipole 1 (Debye),Induced Dipole 2 (Debye),Induced Dipole 3 (Debye),Induced Dipole 4 (Debye),Induced Dipole 5 (Debye),Total Dipole 1 (Debye),Total Dipole 2 (Debye),Total Dipole 3 (Debye),Total Dipole 4 (Debye),Total Dipole 5 (Debye),Induction energy (eV),Electrostatic energy (eV)
+1,-0.2744,0.0417,0.0946,0.1061,0.0558,1.5806,1.8967,1.9496,1.9611,1.9108,-0.0218,-0.0693
+2,-0.2726,0.0364,0.0984,0.1108,0.0594,1.5824,1.8914,1.9534,1.9658,1.9144,-0.0218,-0.0699
+3,-0.2727,0.0366,0.0984,0.111,0.0596,1.5823,1.8916,1.9534,1.966,1.9146,-0.0218,-0.0699
+4,-0.2727,0.0366,0.0985,0.111,0.0596,1.5823,1.8916,1.9535,1.966,1.9146,-0.0218,-0.0699
